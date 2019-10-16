@@ -1,14 +1,14 @@
 package api;
 
-import domain.Currency;
-import domain.Stock;
-import domain.StockDTO;
-import domain.StockPrice;
+import domain.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
+import service.StockService;
 
 import java.math.BigDecimal;
+import java.security.Provider;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,5 +47,30 @@ class MainTest {
         assertEquals(defaultStock.getStockPrice().getPrice(), stockDTO.getPriceDecimal());
         assertEquals(defaultStock.getStockPrice().getCurrency(), stockDTO.getPriceCurrency());
 
+    }
+
+    @Test
+    void givenAStock_whenUsingTheStockService_thenThePriceForTheStockIsUpdated() {
+        //GIVEN
+        Stock randomStock = new Stock("ID", "idSoftware");
+        StockRepository repository = new StockRepository();
+        repository.getDatabase().put("ID", randomStock);
+        StockService stockService = new StockService(repository);
+        //WHEN
+        stockService.getStock("ID");
+        //THEN
+        assertEquals("ID", randomStock.getId());
+        assertEquals(Currency.EUR, randomStock.getStockPrice().getCurrency());
+    }
+
+    @Test
+    void givenAStock_whenUsingTheStockService_thenAnErrorIsThrownWhenStockDoesntExist() {
+        //GIVEN
+        Stock randomStock = new Stock("ID", "idSoftware");
+        StockRepository repository = new StockRepository();
+        repository.getDatabase().put("ID", randomStock);
+        StockService stockService = new StockService(repository);
+        //THEN
+        assertThrows(NoSuchElementException.class, () -> stockService.getStock("APP"));
     }
 }

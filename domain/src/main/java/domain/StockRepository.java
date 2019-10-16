@@ -13,13 +13,14 @@ public class StockRepository {
     }
 
     public Stock getStockInformation(String stockId){
-        try{
-            checkIfStockIsInDatabase(stockId);
-            return database.get(stockId);
-        } catch (NoSuchElementException noSuchElEx){
-            System.err.println("Stock not found in database");
+        assertValidStock(stockId);
+        return database.get(stockId);
+    }
+
+    private void assertValidStock(String stockId) {
+        if(!checkIfStockIsInDatabase(stockId)){
+            throw new NoSuchElementException();
         }
-        return null;
     }
 
     public Map<String, Stock> getDatabase() {
@@ -27,12 +28,7 @@ public class StockRepository {
     }
 
     public boolean checkIfStockIsInDatabase(String stockId){
-        if(database.get(stockId) != null){
-            return true;
-        } else{
-            throw new NoSuchElementException();
-        }
-
+        return database.get(stockId) != null;
     }
 
 }

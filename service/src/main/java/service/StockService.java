@@ -17,12 +17,8 @@ public class StockService {
     }
 
     public Stock getStock(String stockId){
-
         Stock stockToEnrich = repository.getStockInformation(stockId);
-
         BigDecimal retrievedPrice = ExternalStockInformation.getPriceForStockInEuro(stockId);
-
-        assert stockToEnrich != null;
         stockToEnrich.setStockPrice(new StockPrice(retrievedPrice, Currency.EUR));
         return stockToEnrich;
     }

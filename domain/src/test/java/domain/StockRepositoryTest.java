@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,9 +27,7 @@ class StockRepositoryTest {
         //GIVEN
         StockRepository stockRepository = new StockRepository();
         stockRepository.getDatabase().put("ID", new Stock("ID", "idSoftware"));
-        //WHEN
-
         //THEN
-        assertEquals("Stock not found in database", stockRepository.getStockInformation("APP"));
+        assertThrows(NoSuchElementException.class, () -> stockRepository.getStockInformation("APP"));
     }
 }
