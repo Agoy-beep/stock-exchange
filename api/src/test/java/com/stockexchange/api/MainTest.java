@@ -53,13 +53,12 @@ class MainTest {
         //GIVEN
         Stock randomStock = new Stock("ID", "idSoftware");
         StockRepository repository = new StockRepository();
-        repository.getDatabase().put("ID", randomStock);
         StockService stockService = new StockService(repository);
         //WHEN
         stockService.getStock("ID");
         //THEN
         assertEquals("ID", randomStock.getId());
-        assertEquals(Currency.EUR, randomStock.getStockPrice().getCurrency());
+        assertEquals(Currency.GBP, randomStock.getStockPrice().getCurrency());
     }
 
     @Test
@@ -67,7 +66,6 @@ class MainTest {
         //GIVEN
         Stock randomStock = new Stock("ID", "idSoftware");
         StockRepository repository = new StockRepository();
-        repository.getDatabase().put("ID", randomStock);
         StockService stockService = new StockService(repository);
         //THEN
         assertThrows(NoSuchElementException.class, () -> stockService.getStock("APP"));
@@ -78,7 +76,6 @@ class MainTest {
         //GIVEN
         Stock randomStock = new Stock("ID", "idSoftware");
         StockRepository repository = new StockRepository();
-        repository.getDatabase().put("ID", randomStock);
         StockService stockService = new StockService(repository);
         StockExchangeController controller = new StockExchangeController(stockService);
         //WHEN
@@ -94,7 +91,6 @@ class MainTest {
         //GIVEN
         Stock randomStock = new Stock("ID", "idSoftware");
         StockRepository repository = new StockRepository();
-        repository.getDatabase().put("ID", randomStock);
         StockService stockService = new StockService(repository);
         StockExchangeController controller = new StockExchangeController(stockService);
         //THEN

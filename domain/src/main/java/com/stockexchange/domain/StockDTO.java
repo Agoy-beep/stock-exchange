@@ -41,4 +41,14 @@ public class StockDTO {
     public void setPriceCurrency(Currency priceCurrency) {
         this.priceCurrency = priceCurrency;
     }
+
+    @Override
+    public String toString() {
+        return "StockDTO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", priceDecimal=" + priceDecimal +
+                ", priceCurrency=" + priceCurrency +
+                '}';
+    }
 }

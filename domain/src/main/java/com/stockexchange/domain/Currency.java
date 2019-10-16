@@ -13,7 +13,10 @@ public enum Currency {
         this.symbol = symbol;
     }
 
-    /**
-     * Singleton? NAAH
-     */
+    @Override
+    public String toString() {
+        return "Currency{" +
+                "label='" + label + '\'' +
+                '}';
+    }
 }

@@ -1,15 +1,20 @@
 package com.stockexchange.domain;
 
+import com.google.common.collect.ImmutableMap;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class StockRepository {
 
-    private final Map<String, Stock> database ;
+    private final ImmutableMap<String, Stock> database = new ImmutableMap.Builder<String, Stock>()
+            .put("ID", new Stock("ID", "idSoftware"))
+            .put("EPC", new Stock("EPC", "EpicGames"))
+            .put("BLIZZ", new Stock("BLIZZ", "Blizzard"))
+            .build();
 
     public StockRepository() {
-        this.database = new HashMap<String, Stock>();
     }
 
     public Stock getStockInformation(String stockId){

@@ -14,7 +14,6 @@ class StockRepositoryTest {
     void getStockInformation() {
         //GIVEN
         StockRepository stockRepository = new StockRepository();
-        stockRepository.getDatabase().put("ID", new Stock("ID", "idSoftware"));
         //WHEN
         Stock searchedForStock = stockRepository.getStockInformation("ID");
         //THEN
@@ -25,7 +24,6 @@ class StockRepositoryTest {
     void givenAStockRepository_whenAskedForStockNotInTheDatabase_thenThrowAnException() {
         //GIVEN
         StockRepository stockRepository = new StockRepository();
-        stockRepository.getDatabase().put("ID", new Stock("ID", "idSoftware"));
         //THEN
         assertThrows(NoSuchElementException.class, () -> stockRepository.getStockInformation("APP"));
     }
