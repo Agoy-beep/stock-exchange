@@ -24,7 +24,6 @@
             <groupId>com.stock-exchange</groupId>
             <artifactId>service</artifactId>
          </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

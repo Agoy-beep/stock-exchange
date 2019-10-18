@@ -36,11 +36,11 @@ public class StockExchangeController {
         } catch (NoSuchElementException noSuchElEx) {
             System.err.println("That stock doesn't exist!" + noSuchElEx);
         }
-
+        logger.warn("COMPUTER SAYS NO!");
         return stockToStockDTO.map(defaultErrorStock, StockDTO.class);
     }
 
-    @RequestMapping("/")
+    @GetMapping("/hello")
     public String helloExample() {
         logger.trace("I'll update you on every heartbeat 💓");
         logger.debug("I'm taking a (sub)step 🚶");

@@ -8,13 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
         <module name="domain" />
-        <module name="jar" />
         <module name="interfaces" />
         <module name="service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cli" target="11" />
+      <module name="jar" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -20,7 +20,6 @@
         <module>service</module>
         <module>domain</module>
         <module>interfaces</module>
-        <module>jar</module>
     </modules>
 
     <properties>

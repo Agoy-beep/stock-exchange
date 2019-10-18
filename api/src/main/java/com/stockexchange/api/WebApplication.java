@@ -1,11 +1,11 @@
-package com.stockexchange;
+package com.stockexchange.api;
 
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.stockexchange")
 public class WebApplication {
     public static void main(String[] args) {
 
