@@ -1,18 +1,20 @@
-package com.stockexchange.cli;
+package com.stockexchange.jar;
 
 import com.stockexchange.api.StockExchangeController;
-import com.stockexchange.domain.Stock;
 import com.stockexchange.domain.StockDTO;
-import com.stockexchange.domain.StockRepository;
-import com.stockexchange.service.StockService;
+import com.stockexchange.jar.config.Config;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.NoSuchElementException;
 
-public class MyCLI {
+
+public class Application {
+
     public static void main(String[] args) {
-        StockRepository repository = new StockRepository();
-        StockService stockService = new StockService(repository);
-        StockExchangeController controller = new StockExchangeController(stockService);
+
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+
+        StockExchangeController controller = context.getBean(StockExchangeController.class);
 
         if(args.length == 0){
             System.out.println("The point of the exercise is that you look for stock, dufus.");
@@ -24,9 +26,12 @@ public class MyCLI {
             try{
                 StockDTO searchedForStock = controller.getStock(args[0]);
                 System.out.println(searchedForStock.toString());
+                System.out.println("Yay!");
             } catch (NoSuchElementException noSuchElEx){
                 System.err.println("That stock doesn't exist!");
             }
         }
     }
+
+
 }

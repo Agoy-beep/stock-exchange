@@ -9,12 +9,18 @@
     <packaging>pom</packaging>
     <version>0.1</version>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.0.RELEASE</version>
+    </parent>
+
     <modules>
         <module>api</module>
         <module>service</module>
         <module>domain</module>
         <module>interfaces</module>
-        <module>cli</module>
+        <module>jar</module>
     </modules>
 
     <properties>
@@ -23,6 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -46,6 +53,11 @@
                 <version>0.1</version>
             </dependency>
             <dependency>
+                <groupId>com.stock-exchange</groupId>
+                <artifactId>jar</artifactId>
+                <version>0.1</version>
+            </dependency>
+            <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>28.1-jre</version>
@@ -63,6 +75,19 @@
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+        <dependency>
+        <groupId>javax.inject</groupId>
+        <artifactId>javax.inject</artifactId>
+        <version>1</version>
+    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -73,7 +98,7 @@
                     <configuration>
                         <archive>
                             <manifest>
-                                <mainClass>com.stockexchange.cli.MyCLI</mainClass>
+                                <mainClass>com.stockexchange.api.WebApplication</mainClass>
                                 <classpathPrefix>lib/</classpathPrefix>
                                 <addClasspath>true</addClasspath>
                             </manifest>
@@ -104,7 +129,7 @@
                     <configuration>
                         <archive>
                             <manifest>
-                                <mainClass>com.stockexchange.cli.MyCLI</mainClass>
+                                <mainClass>com.stockexchange.api.WebApplication</mainClass>
                                 <classpathPrefix>lib/</classpathPrefix>
                                 <addClasspath>true</addClasspath>
                             </manifest>

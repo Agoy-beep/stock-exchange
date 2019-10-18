@@ -5,9 +5,11 @@ import com.stockexchange.domain.Stock;
 import com.stockexchange.domain.StockPrice;
 import com.stockexchange.domain.StockRepository;
 import com.stockexchange.interfaces.ExternalStockInformation;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
 public class StockService {
 
     private final StockRepository repository;

@@ -1,11 +1,13 @@
 package com.stockexchange.domain;
 
 import com.google.common.collect.ImmutableMap;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+@Component
 public class StockRepository {
 
     private final ImmutableMap<String, Stock> database = new ImmutableMap.Builder<String, Stock>()

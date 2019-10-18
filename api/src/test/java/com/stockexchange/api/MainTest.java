@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-    @Test
+    /*@Test
     void givenAStock_whenUsingDefault_thenStockPriceIsRetrievable() {
         //GIVEN
         Stock randomStock = new Stock("TES", "Tesla");
@@ -96,5 +96,5 @@ class MainTest {
         //THEN
         assertThrows(NoSuchElementException.class, () -> controller.getStock("APP"));
     }
-
+        */
 }
