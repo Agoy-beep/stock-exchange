@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
-    /*@Test
+    @Test
     void givenAStock_whenUsingDefault_thenStockPriceIsRetrievable() {
         //GIVEN
         Stock randomStock = new Stock("TES", "Tesla");
@@ -61,7 +61,7 @@ class MainTest {
         assertEquals(Currency.GBP, randomStock.getStockPrice().getCurrency());
     }
 
-    @Test
+   @Test
     void givenAStock_whenUsingTheStockService_thenAnErrorIsThrownWhenStockDoesntExist() {
         //GIVEN
         Stock randomStock = new Stock("ID", "idSoftware");
@@ -86,7 +86,7 @@ class MainTest {
         assertEquals("ID", randomStockDTO.getId());
     }
 
-    @Test
+    /*@Test
     void givenAStock_whenUsingTheStockExchangeController_thenAnErrorIsThrownWhenStockDoesntExist() {
         //GIVEN
         Stock randomStock = new Stock("ID", "idSoftware");
@@ -95,6 +95,6 @@ class MainTest {
         StockExchangeController controller = new StockExchangeController(stockService);
         //THEN
         assertThrows(NoSuchElementException.class, () -> controller.getStock("APP"));
-    }
-        */
+    }*/
+
 }
